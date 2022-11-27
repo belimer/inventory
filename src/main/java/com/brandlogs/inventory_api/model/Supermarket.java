@@ -22,7 +22,7 @@ public class Supermarket extends Record{
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long supermarketId;
 	@Column(name = "name")
 	private String name;

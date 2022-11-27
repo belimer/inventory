@@ -12,16 +12,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "stores")
-public class Store extends Record{
+@Table(name = "vendors")
+public class Vendor extends Record{
 
 	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long storeId;
-	@Column(name = "store_name")
-	private String storeName;
-	@Column(name = "location")
-	private String location;
+	private long vendorId;
+	@Column(name = "vendor_name")
+	private String vendorName;
 }
