@@ -41,10 +41,9 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override
-	public ResponseEntity<?> createItems(ItemRequest itemRequest, long storeId,long vendorId) {
+	public ResponseEntity<?> createItems(ItemRequest itemRequest,long vendorId) {
 		// TODO Auto-generated method stub
-		Store store = storeRepository.findById(storeId).get();
-		logger.info(store.getStoreName());
+//		Store store = storeRepository.findById(storeId).get();
 		Vendor vendor = vendorRepository.findById(vendorId).get();
 		logger.info(vendor.getVendorName());
 		Item newItem = new Item();
@@ -54,7 +53,6 @@ public class ItemServiceImpl implements ItemService{
 		newItem.setQuantity(itemRequest.getQuantity());
 		newItem.setPrice(itemRequest.getPrice());
 		newItem.setVendor(vendor);
-		newItem.setStore(store);
 		
 		
 		itemRepository.save(newItem);

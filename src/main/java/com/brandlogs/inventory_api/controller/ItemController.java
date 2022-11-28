@@ -22,12 +22,15 @@ public class ItemController {
 	@Autowired
 	private ItemRequestValidation itemRequestValidation;
 
-	@RequestMapping(method = RequestMethod.POST, value = "/create/{store}/{vendor}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> createItem(@RequestBody @Valid ItemDto itemRequest, @PathVariable("store") long storeId,
-			@PathVariable("vendor") long vendorId) throws InvalidDataException {
-		return itemRequestValidation.processRequest(itemRequest, storeId, vendorId);
+//	@RequestMapping(method = RequestMethod.POST, value = "/create/{store}/{vendor}", consumes = MediaType.APPLICATION_JSON_VALUE)
+//	public ResponseEntity<?> createItem(@RequestBody @Valid ItemDto itemRequest, @PathVariable("store") long storeId,
+//			@PathVariable("vendor") long vendorId) throws InvalidDataException {
+//		return itemRequestValidation.processRequest(itemRequest, storeId, vendorId);
+//	}
+	@RequestMapping(method = RequestMethod.POST, value = "/create/{vendor}", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> createItem(@RequestBody @Valid ItemDto itemRequest,@PathVariable("vendor") long vendorId) throws InvalidDataException {
+		return itemRequestValidation.processRequest(itemRequest,vendorId);
 	}
-
 	@GetMapping("/{itemId}")
 	public ResponseEntity<?> getItem(@PathVariable("itemId") long id) {
 		return ResponseEntity.ok().build();

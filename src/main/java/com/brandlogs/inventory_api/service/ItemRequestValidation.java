@@ -19,7 +19,7 @@ public class ItemRequestValidation {
 	@Autowired
 	private ItemService itemService;
 
-	public ResponseEntity<?> processRequest(ItemDto itemRequest, long storeId,long vendorId) throws InvalidDataException{
+	public ResponseEntity<?> processRequest(ItemDto itemRequest,long vendorId) throws InvalidDataException{
 		String name = itemRequest.getItemName();
 		String type = itemRequest.getCategory();
 		String quatity = itemRequest.getQuantity();
@@ -44,7 +44,7 @@ public class ItemRequestValidation {
 		}
 		ItemRequest req = ItemRequest.valueOf(name, ItemCategory.valueOf(type.toUpperCase()), Integer.parseInt(quatity),
 				Double.parseDouble(price));
-		return itemService.createItems(req, storeId,vendorId);
+		return itemService.createItems(req,vendorId);
 	}
 
 }

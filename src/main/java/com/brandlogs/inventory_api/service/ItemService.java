@@ -8,5 +8,6 @@ import com.brandlogs.inventory_api.dto.ItemRequest;
 public interface ItemService {
 
 	ResponseEntity<?> getItems(long storeId,String date);
-	ResponseEntity<?> createItems(ItemRequest itemRequest,long storeId,long vendorId);
+//	ResponseEntity<?> createItems(ItemRequest itemRequest,long storeId,long vendorId);
+	ResponseEntity<?> createItems(ItemRequest itemRequest,long vendorId);
 }

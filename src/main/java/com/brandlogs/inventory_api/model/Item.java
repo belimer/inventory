@@ -32,10 +32,10 @@ public class Item extends Record {
 	@JoinColumn(name = "vendor_id", nullable = false, updatable = false)
 	@ManyToOne
 	private Vendor vendor;
-	
-	@JoinColumn(name = "store_id", nullable = false, updatable = false)
-	@ManyToOne
-	private Store store;
+//	
+//	@JoinColumn(name = "store_id", nullable = false, updatable = false)
+//	@ManyToOne
+//	private Store store;
 	
 	@Column(name = "item_code")
 	private String itemCode;
