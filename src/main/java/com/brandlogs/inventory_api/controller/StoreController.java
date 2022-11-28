@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.brandlogs.inventory_api.dto.AddItemsToStoreResponseDTO;
 import com.brandlogs.inventory_api.dto.StoreDto;
+import com.brandlogs.inventory_api.dto.StoreInfoDto;
 import com.brandlogs.inventory_api.service.StoreService;
 
 @RestController
@@ -40,8 +41,9 @@ public class StoreController {
 	        		storeService.addItems(storeId, itemsIDs);
 	        return new ResponseEntity<>(addItemsToSupermarketResponseDTO, HttpStatus.OK);
 	    }
-	@GetMapping("/{storeId}")
-	public ResponseEntity<?> getStore(@PathVariable("storeId") long id){
-		return ResponseEntity.ok().build();
-	}
+	 
+	  @GetMapping("/{storeId}")
+	    public ResponseEntity<StoreInfoDto> getStore(@PathVariable Long storeId) {
+	        return new ResponseEntity<>(storeService.getStoreInfo(storeId), HttpStatus.OK);
+	    }
 }

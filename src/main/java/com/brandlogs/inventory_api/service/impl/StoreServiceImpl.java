@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import com.brandlogs.inventory_api.dto.AddItemsToStoreResponseDTO;
 import com.brandlogs.inventory_api.dto.ApiResonse;
 import com.brandlogs.inventory_api.dto.StoreDto;
+import com.brandlogs.inventory_api.dto.StoreInfoDto;
 import com.brandlogs.inventory_api.exception.StoreNotFoundException;
 import com.brandlogs.inventory_api.model.Item;
 import com.brandlogs.inventory_api.model.Store;
@@ -92,5 +93,19 @@ public class StoreServiceImpl implements StoreService{
 	        storeRepository.save(store);
 	        return new AddItemsToStoreResponseDTO(store.getStoreId(), addedItemsNames);
 	}
+	
+	 @Override
+	    public StoreInfoDto getStoreInfo(long id) {
+	        Optional<Store> optional = storeRepository.findById(id);
+	        if (optional.isEmpty()) {
+	            throw new StoreNotFoundException(id);
+	        }
+	        Store store = optional.get();
+	        StoreInfoDto storeInfoDto = new StoreInfoDto();
+	        storeInfoDto.setLocation(store.getLocation());
+	        storeInfoDto.setName(store.getStoreName());
+	        storeInfoDto.setItems(new ArrayList<>(store.getItems()));
+	        return storeInfoDto;
+	    }
 
 }

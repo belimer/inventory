@@ -8,11 +8,13 @@ import org.springframework.http.ResponseEntity;
 
 import com.brandlogs.inventory_api.dto.AddItemsToStoreResponseDTO;
 import com.brandlogs.inventory_api.dto.StoreDto;
+import com.brandlogs.inventory_api.dto.StoreInfoDto;
 
 public interface StoreService {
 	
 	ResponseEntity<?> createStore(StoreDto store);
 
 	AddItemsToStoreResponseDTO addItems(long storeId, @NotEmpty List<Long> itemsIDs);
+	StoreInfoDto getStoreInfo(long id);
 
 }
